@@ -1,13 +1,13 @@
-package org.usfirst.frc.team4183.robot.commands.TurretSubsystem;
+package org.usfirst.frc.team4183.robot.utils;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Template extends Command {
+public class StatesTemplate extends Command {
 
-    public Template() {
+    public StatesTemplate() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
