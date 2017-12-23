@@ -1,6 +1,10 @@
 package org.usfirst.frc.team4183.robot;
 
+import org.usfirst.frc.team4183.robot.subsystems.DriveSubsystem;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -17,6 +21,10 @@ public class Robot extends IterativeRobot {
 	final String customAuto = "My Auto";
 	String autoSelected;
 	SendableChooser<String> chooser = new SendableChooser<>();
+	
+	public static DriveSubsystem drivesubsystem;
+	Joystick driverJoystick = new Joystick(0);
+
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -64,18 +72,18 @@ public class Robot extends IterativeRobot {
 		}
 	}
 
-	/**
-	 * This function is called periodically during operator control
-	 */
-	@Override
 	public void teleopPeriodic() {
-	}
-
-	/**
-	 * This function is called periodically during test mode
-	 */
-	@Override
-	public void testPeriodic() {
+		Scheduler.getInstance().run();
+		//Joystick joystickScale = JoystickScale(fromInteger.joystick)
+		double turn = driverJoystick.getRawAxis(PS4Constants.RIGHT_STICK_X.getValue());
+		double drive = driverJoystick.getRawAxis(PS4Constants.LEFT_STICK_Y.getValue());
+		
+		//SCALE HOWEVER
+	
+		//options.addDefault("x", scale(1, drive, turn));
+		//multiply by negative one, directions are opposite? switch motor IDs 
+		
+		drivesubsystem.arcadeDrive(drive, turn);
 	}
 }
 
